@@ -1,0 +1,523 @@
+/* ===============================
+   Google Style Birthday Website
+   =============================== */
+
+:root{
+    --bg:#08111f;
+    --bg2:#111c2f;
+    --glass:rgba(255,255,255,.08);
+    --border:rgba(255,255,255,.15);
+    --white:#ffffff;
+    --text:#d9e2f2;
+    --accent:#ffd6e7;
+    --shadow:0 20px 50px rgba(0,0,0,.35);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:
+    radial-gradient(circle at top,#16233b 0%,#08111f 60%);
+    color:var(--white);
+
+    font-family:'Poppins',sans-serif;
+
+    overflow-x:hidden;
+
+}
+
+/* ===============================
+   STAR BACKGROUND
+================================*/
+
+.stars{
+
+    position:fixed;
+    inset:0;
+    z-index:-2;
+
+    background-image:
+
+    radial-gradient(2px 2px at 20% 30%,white,transparent),
+    radial-gradient(2px 2px at 80% 20%,white,transparent),
+    radial-gradient(1px 1px at 50% 70%,white,transparent),
+    radial-gradient(2px 2px at 15% 80%,white,transparent),
+    radial-gradient(2px 2px at 90% 65%,white,transparent),
+    radial-gradient(2px 2px at 65% 45%,white,transparent),
+    radial-gradient(1px 1px at 35% 15%,white,transparent),
+    radial-gradient(2px 2px at 70% 90%,white,transparent);
+
+    animation:starsMove 15s linear infinite;
+
+}
+
+@keyframes starsMove{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-60px);
+    }
+
+}
+
+/* ===============================
+ Overlay
+================================*/
+
+.overlay{
+
+    position:fixed;
+    inset:0;
+
+    background:linear-gradient(
+
+    rgba(0,0,0,.2),
+    rgba(0,0,0,.45)
+
+    );
+
+    z-index:-1;
+
+}
+
+/* ===============================
+ Section
+================================*/
+
+section{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:60px 25px;
+
+}
+
+/* ===============================
+ HERO
+================================*/
+
+.hero{
+    transition: transform 1s ease;
+}
+
+.small{
+
+    color:#9fb2d4;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    margin-bottom:15px;
+
+}
+
+.hero h1{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:80px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.date{
+
+    color:#d5dff1;
+
+    font-size:20px;
+
+    margin-bottom:35px;
+
+}
+
+button{
+
+    padding:16px 40px;
+
+    border:none;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+    background:linear-gradient(
+
+    135deg,
+
+    #ffd6e7,
+
+    #ffffff
+
+    );
+
+    color:#111;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+
+    0 15px 35px rgba(255,214,231,.35);
+
+}
+
+/* ==========================
+   Envelope V1
+========================== */
+
+.envelope{
+    position:relative;
+    width:180px;
+    height:120px;
+    margin:40px auto 15px;
+    cursor:pointer;
+}
+
+.paper{
+
+    position:absolute;
+
+    left:15px;
+    right:15px;
+    top:15px;
+    bottom:15px;
+
+    background:white;
+    border-radius:10px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:42px;
+
+    transition:.8s ease;
+
+    z-index:1;
+}
+
+.flap{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    background:#ffd6e7;
+
+    clip-path:polygon(0 0,100% 0,50% 60%);
+
+    transform-origin:top;
+
+    transition:.8s ease;
+
+    z-index:2;
+}
+
+.envelope.open .flap{
+
+    transform:rotateX(180deg);
+
+}
+
+.envelope.open .paper{
+
+    transform:translateY(-120px);
+
+}
+
+.click-text{
+
+    opacity:.7;
+    letter-spacing:2px;
+
+}
+
+/* ===============================
+ Glass Card
+================================*/
+
+.glass{
+
+    width:min(800px,100%);
+
+    background:var(--glass);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid var(--border);
+
+    border-radius:25px;
+
+    padding:50px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.glass h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:50px;
+
+    margin-bottom:30px;
+
+}
+
+.glass p{
+
+    line-height:2;
+
+    color:var(--text);
+
+    margin-bottom:18px;
+
+    font-size:17px;
+
+}
+
+/* ===============================
+ PHOTO
+================================*/
+
+.photo{
+
+    text-align:center;
+
+}
+
+.photo-card{
+
+    background:white;
+
+    color:#111;
+
+    width:340px;
+
+    padding:18px;
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow);
+
+    transform:rotate(-2deg);
+
+    transition:.4s;
+
+}
+
+.photo-card:hover{
+
+    transform:
+
+    rotate(2deg)
+
+    scale(1.03);
+
+}
+
+.photo-card img{
+
+    width:100%;
+
+    border-radius:14px;
+
+    display:block;
+
+}
+
+.photo-card p{
+
+    margin-top:15px;
+
+    font-weight:600;
+
+}
+
+/* ===============================
+ MUSIC
+================================*/
+
+.music{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.music h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:48px;
+
+    margin-bottom:25px;
+
+}
+
+/* ===============================
+ END
+================================*/
+
+.end{
+
+    text-align:center;
+
+    flex-direction:column;
+
+}
+
+.end h1{
+
+    font-size:75px;
+
+    font-family:"Cormorant Garamond",serif;
+
+}
+
+.end h2{
+
+    margin-bottom:25px;
+
+    color:#ffd6e7;
+
+}
+
+.end p{
+
+    color:var(--text);
+
+    line-height:2;
+
+}
+
+.end span{
+
+    font-size:45px;
+
+    margin-top:30px;
+
+}
+
+/* ===============================
+ Hidden Animation
+================================*/
+
+.hidden{
+
+    opacity:0;
+
+    transform:translateY(60px);
+
+    transition:1s;
+
+}
+
+.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+/* ===============================
+ Scrollbar
+================================*/
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#ffd6e7;
+
+    border-radius:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#08111f;
+
+}
+
+/* ===============================
+ Mobile
+================================*/
+
+@media(max-width:768px){
+
+.hero h1{
+
+    font-size:52px;
+
+}
+
+.glass{
+
+    padding:30px;
+
+}
+
+.glass h2{
+
+    font-size:38px;
+
+}
+
+.photo-card{
+
+    width:90%;
+
+}
+
+.music h2{
+
+    font-size:36px;
+
+}
+
+.end h1{
+
+    font-size:52px;
+
+}
+
+}
