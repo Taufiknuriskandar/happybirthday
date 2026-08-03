@@ -574,3 +574,50 @@ button:hover{
 }
 
 }
+/* ===========================
+   Footer
+=========================== */
+
+.footer{
+
+    width:100%;
+
+    margin-top:120px;
+
+    padding:60px 20px;
+
+    text-align:center;
+
+}
+
+.footer-line{
+
+    width:180px;
+
+    height:1px;
+
+    background:rgba(255,255,255,.25);
+
+    margin:0 auto 30px;
+
+}
+
+.footer p{
+
+    font-family:"Cormorant Garamond", serif;
+
+    font-size:20px;
+
+    font-style:italic;
+
+    color:rgba(255,255,255,.75);
+
+    line-height:1.8;
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+}
