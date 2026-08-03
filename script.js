@@ -1,6 +1,16 @@
+// Selalu mulai dari atas saat halaman dibuka / refresh
+if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+}
+
+window.addEventListener("load", () => {
+    window.scrollTo(0, 0);
+});
+
 // ==============================
 // Birthday Website
 // ==============================
+
 
 const openBtn = document.getElementById("openBtn");
 const musicBtn = document.getElementById("musicBtn");
@@ -25,51 +35,46 @@ openBtn.addEventListener("click", () => {
     openBtn.innerHTML = "Opening... 🤍";
 
     document.querySelector(".hero").style.transform = "scale(1.03)";
-
     openBtn.style.transform = "scale(0.95)";
     openBtn.style.opacity = "0.7";
 
-    // ==========================
-    // MUSIC FADE IN
-    // ==========================
-
+    // Play music + fade in
     audio.volume = 0;
 
-    audio.play().catch(err => {
+    audio.play().then(() => {
+
+        musicPlaying = true;
+
+        if (musicBtn) {
+            musicBtn.innerHTML = "⏸ Pause Music";
+        }
+
+        let volume = 0;
+
+        const fadeMusic = setInterval(() => {
+
+            volume += 0.05;
+
+            audio.volume = Math.min(volume, 1);
+
+            if (volume >= 1) {
+                clearInterval(fadeMusic);
+            }
+
+        }, 120);
+
+    }).catch(err => {
         console.log(err);
     });
 
-    musicPlaying = true;
-
-    if (musicBtn) {
-        musicBtn.innerHTML = "⏸ Pause Music";
-    }
-
-    let volume = 0;
-
-    const fadeMusic = setInterval(() => {
-
-        volume += 0.05;
-
-        audio.volume = Math.min(volume, 1);
-
-        if (volume >= 1) {
-            clearInterval(fadeMusic);
-        }
-
-    }, 120);
-
-    // ==========================
-    // CONFETTI
-    // ==========================
-
+    // Confetti
     launchConfetti();
 
-    // ==========================
-    // SHOW SECTION
-    // ==========================
-
+    // Tunggu animasi
     setTimeout(() => {
+
+        // Aktifkan scroll
+        document.body.classList.remove("lock-scroll");
 
         sections.forEach((section, index) => {
 
@@ -84,46 +89,16 @@ openBtn.addEventListener("click", () => {
 
         });
 
-        const letter = document.getElementById("letter");
-
-        if (letter) {
-            letter.scrollIntoView({
-                behavior: "smooth"
-            });
-        }
+        document.getElementById("letter").scrollIntoView({
+            behavior: "smooth"
+        });
 
     }, 1000);
 
 });
 
 // ==============================
-// Music
-// ==============================
-
-musicBtn.addEventListener("click", () => {
-
-    if (!musicPlaying) {
-
-        audio.play();
-
-        musicBtn.innerHTML = "⏸ Pause Music";
-
-        musicPlaying = true;
-
-    } else {
-
-        audio.pause();
-
-        musicBtn.innerHTML = "▶ Play Music";
-
-        musicPlaying = false;
-
-    }
-
-});
-
-// ==============================
-// Music
+// Music Button
 // ==============================
 
 musicBtn.addEventListener("click", () => {

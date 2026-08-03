@@ -35,6 +35,43 @@ body{
 
 }
 
+/* ===========================
+   Lock Scroll
+=========================== */
+
+body.lock-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Open Button Animation */
+
+#openBtn {
+    transition: all .4s ease;
+    animation: pulse 2.5s infinite;
+}
+
+#openBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(255, 214, 231, .25);
+}
+
+@keyframes pulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.03);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
 /* ===============================
    STAR BACKGROUND
 ================================*/
@@ -517,6 +554,22 @@ button:hover{
 .end h1{
 
     font-size:52px;
+
+}
+
+/* ===================================
+   Mobile Responsive
+=================================== */
+
+@media screen and (max-width: 768px){
+
+    .hero h1{
+
+        font-size:52px;
+
+        line-height:1.1;
+
+    }
 
 }
 
